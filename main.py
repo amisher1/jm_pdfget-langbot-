@@ -1,8 +1,6 @@
-import jmcomic, os, time, yaml
 from PIL import Image
 from pkg.plugin.context import register, handler, llm_func, BasePlugin, APIHost, EventContext
 from pkg.plugin.events import *  # 导入事件类
-import re
 
 """
 收到消息，输出jmcomic的漫画pdf文件
