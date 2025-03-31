@@ -1,0 +1,3 @@
+pip install jmcomic-2.5.32-py3-none-any.whl
+pip install pillow
+pip install pyyaml 
