@@ -87,9 +87,9 @@ class RemoveTagsPlugin(BasePlugin):
     @handler(GroupNormalMessageReceived)
     async def group_normal_message_received(self, ctx: EventContext):
         msg = ctx.event.text_message  # 这里的 event 即为 GroupNormalMessageReceived 的对象
-        if "！jm" in msg or "!jm" in msg:  # 如果消息含有Jm查询
+        if "@jm" in msg:  # 如果消息含有Jm查询
             
-            txt = msg.strip("!jm").strip("！jm").strip("\n")
+            txt = msg.strip("@jm").strip(" ").strip("\n")
             txt.split(",")
             self.jm(txt)
             
