@@ -89,7 +89,7 @@ class RemoveTagsPlugin(BasePlugin):
         msg = ctx.event.text_message  # 这里的 event 即为 GroupNormalMessageReceived 的对象
         if "@jm" in msg:  # 如果消息含有Jm查询
             
-            txt = msg.strip("@jm").strip(" ").strip("\n")
+            txt = msg.strip("@jm").strip().strip("\n")
             txt.split(",")
             self.jm(txt)
             
@@ -98,7 +98,10 @@ class RemoveTagsPlugin(BasePlugin):
 
             # 添加文件目录
             for id in txt:
-                ctx.add_return("reply",url='./img/'+ txt +'.pdf')
+                msg_chain = MessageChain([
+                    Image(url='./img/'+ txt +'.pdf')
+                ])
+                await ctx.reply(msg_chain)
 
             # 阻止该事件默认行为（向接口获取回复）
             ctx.prevent_default()
