@@ -97,12 +97,8 @@ class RemoveTagsPlugin(BasePlugin):
             self.ap.logger.debug("jm_get: {}".format(ctx.event.sender_id))
 
             # 添加文件目录
-            for id in txt:
-                msg_chain = MessageChain([
-                    Image(url='./img/'+ txt +'.pdf')
-                ])
-                await ctx.reply(msg_chain)
-
+            ctx.add_return("reply", [Image(path="D:\qqbot\langbot\plugins\img\2.png")])
+            
             # 阻止该事件默认行为（向接口获取回复）
             ctx.prevent_default()
 
