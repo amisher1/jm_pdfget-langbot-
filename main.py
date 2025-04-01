@@ -86,21 +86,13 @@ class RemoveTagsPlugin(BasePlugin):
     # 当收到群消息时触发
     @handler(GroupNormalMessageReceived)
     async def group_normal_message_received(self, ctx: EventContext):
-        msg = ctx.event.text_message  # 这里的 event 即为 GroupNormalMessageReceived 的对象
-        if "@jm" in msg:  # 如果消息含有Jm查询
-            
-            txt = msg.strip("@jm").strip().strip("\n")
-            txt.split(",")
-            self.jm(txt)
-            
-            # 输出调试信息
-            self.ap.logger.debug("jm_get: {}".format(ctx.event.sender_id))
+        msg = ctx.event.response_text  # 这里的 event 即为 GroupNormalMessageReceived 的对象
 
-            # 添加文件目录
-            ctx.add_return("reply", [Image(path="D:\qqbot\langbot\plugins\img\2.png")])
+            # 输出调试信息
+        self.ap.logger.debug("jm_get: {}".format(ctx.event.sender_id))
             
             # 阻止该事件默认行为（向接口获取回复）
-            ctx.prevent_default()
+        ctx.prevent_default()
 
     # 插件卸载时触发
     def __del__(self):
