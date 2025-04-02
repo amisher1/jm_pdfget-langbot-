@@ -16,6 +16,7 @@ class BotMessageOptimizerPlugin(Plugin):
 
     def __init__(self, plugin_host: PluginHost):
         super().__init__(plugin_host)
+        self.image_pattern = re.compile(r'!\[.*?\]\((https?://\S+)\)')
         
     @on(NormalMessageResponded)
     def optimize_message(self, event: EventContext):
