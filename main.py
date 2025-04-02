@@ -20,9 +20,9 @@ class BotMessageOptimizerPlugin(Plugin):
         self.image_pattern = re.compile(r'!\[.*?\]\((https?://\S+)\)')
 
     @on(NormalMessageResponded)
-    def optimize_message(self, event: EventContext, **kwargs):
+    def optimize_message(self, event: EventContext):
         parts = []
-        parts.append(platform_types.Image(url="D:/github/jm_pdfget-langbot-/img/test.png"))
+        parts.append(platform_types.Image(path="D:/github/jm_pdfget-langbot-/img/test.png"))
         event.add_return('reply', parts)       
 
     def __del__(self):
