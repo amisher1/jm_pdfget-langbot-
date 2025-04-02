@@ -20,7 +20,7 @@ class BotMessageOptimizerPlugin(Plugin):
     @on(NormalMessageResponded)
     def optimize_message(self, event: EventContext, **kwargs):
         parts = []
-        parts.append(platform_types.Image(url="https://file.alapi.cn/60s/202407181721238540.png"))
+        parts.append(platform_types.Image(path="D:\github\jm_pdfget-langbot-\img\vme50.png"))
         event.add_return('reply', parts)
 
     def __del__(self):
