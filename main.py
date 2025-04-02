@@ -16,13 +16,14 @@ class BotMessageOptimizerPlugin(Plugin):
 
     def __init__(self, plugin_host: PluginHost):
         super().__init__(plugin_host)
+        # 匹配图片 URL 的正则表达式
         self.image_pattern = re.compile(r'!\[.*?\]\((https?://\S+)\)')
-        
+
     @on(NormalMessageResponded)
-    def optimize_message(self, event: EventContext):
+    def optimize_message(self, event: EventContext, **kwargs):
         parts = []
-        parts.append(platform_types.Image(path="D:/github/jm_pdfget-langbot-/img/test.png"))
-        event.add_return('reply', parts)
+        parts.append(platform_types.Image(url="D:/github/jm_pdfget-langbot-/img/test.png"))
+        event.add_return('reply', parts)       
 
     def __del__(self):
         pass
