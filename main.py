@@ -16,11 +16,13 @@ class BotMessageOptimizerPlugin(Plugin):
 
     def __init__(self, plugin_host: PluginHost):
         super().__init__(plugin_host)
-
+        
     @on(NormalMessageResponded)
-    def optimize_message(self, event: EventContext, **kwargs):
+    def optimize_message(self, event: EventContext):
+        msg = event.event.text_message
         parts = []
         parts.append(platform_types.Image(path="D:/github/jm_pdfget-langbot-/img/test.png"))
+        parts.append(msg)
         event.add_return('reply', parts)
 
     def __del__(self):
