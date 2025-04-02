@@ -23,7 +23,7 @@ class BotMessageOptimizerPlugin(Plugin):
         parts = []
         parts.append(platform_types.Image(path="D:/github/jm_pdfget-langbot-/img/test.png"))
         parts.append(msg)
-        event.add_return('reply', parts)
+        msg.add_return('reply', parts)
 
     def __del__(self):
         pass
